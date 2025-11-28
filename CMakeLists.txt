@@ -29,6 +29,16 @@ add_executable(app
     src/main.cpp
     src/add.cpp
 )
-
 # 添加 include 目录
 target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+# 添加生成静态库方法
+add_library(add_lib STATIC src/add.cpp)
+target_include_directories(add_lib PUBLIC ${CMAKE_SOURCE_DIR}/include)
+
+#添加生成动态库方法
+add_library(app_lib_shared SHARED src/add.cpp)
+target_include_directories(app_lib_shared PUBLIC ${CMAKE_SOURCE_DIR}/include)
+
+
+
